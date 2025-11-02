@@ -7,7 +7,7 @@ WORKDIR /opt/action-runner
 COPY ./entrypoint.sh ./entrypoint.sh
 
 RUN apt-get update \
-  && apt-get -qq install -y curl libicu-dev \
+  && apt-get -qq install -y curl libicu-dev lsb-release \
   && rm -rf /var/lib/apt/lists/* \
   && cd /opt/action-runner \
   && curl -o actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
