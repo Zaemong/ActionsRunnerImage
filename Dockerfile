@@ -18,13 +18,8 @@ RUN apt-get update \
 
 RUN groupadd -g 1100 action-runner \
   && useradd -m -s /bin/bash -u 1100 -g 1100 action-runner \
-  && chown -R action-runner:action-runner /opt/action-runner \
-  && chmod +x /opt/action-runner/run.sh \
-  && chmod +x /opt/action-runner/entrypoint.sh
+  && chown -R action-runner:action-runner /opt/action-runner
 
-FROM node:24-slim AS runner
-WORKDIR /opt/action-runner
-COPY --from=builder /opt/action-runner /opt/action-runner
 USER action-runner
-ENTRYPOINT ["./entrypoint.sh"]
-CMD ["./run.sh"]
+ENTRYPOINT ["sh", "./entrypoint.sh"]
+CMD ["sh", "./run.sh"]
