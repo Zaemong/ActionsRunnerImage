@@ -9,7 +9,7 @@ COPY ./entrypoint.sh ./entrypoint.sh
 
 RUN apt-get update \
     && apt-get -qq install -y curl git jq libicu-dev lsb-release \
-    ca-certificates gnupg build-essential \
+    ca-certificates gnupg build-essential maven \
     && curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
     && apt-get -y install nodejs \
     && rm -rf /var/lib/apt/lists/* \
